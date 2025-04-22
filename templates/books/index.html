@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>高校二手书交易网</title>
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" >
+    <link rel="stylesheet" href="/static/css/file.css" >
+
+</head>
+<body>
+    <div class="nav_head">
+        {%if request.session.username|default:'' != ''%}
+            <P>欢迎您，{{ request.session.username }}</P>
+            <button class="btn btn-default"><a href="/user/logout" >退出</a></button>
+        {%else%}
+        <a class="btn btn-link"  href="/user/login" >登入</a>
+        <a class="btn btn-link"  href="/user/register" >注册</a>
+        {%endif%}
+        <div class="nav dropdown">
+            <a class="btn btn-link"  href="/user/user_center" >| 用户主页</a>
+        </div>
+        <div class="nav">
+            <a class="btn btn-link"  href="/" >首页</a>
+        </div>
+    </div>
+    <div class="title">
+        <img src="/static/img/title1.JPG">
+        <div class="second_title">
+            <div class="find">
+                <input type="text" class="form-control" id="search" >
+                <a type="button" class="btn btn-warning" id="search-button" href="javascript:void(0);" onclick="go_search()">
+                    <span class="glyphicon glyphicon-search"></span>
+                </a>
+                <button type="button" class="btn btn-warning"><a href="/release_books">我有闲置</a></button>
+                <button type="button" class="btn btn-warning"><a href="/book_expensive">贵书之主</a></button>
+            </div>
+        </div>      
+    </div>
+    <!-- 返回最上开始 -->
+    <div class="back_to_top">
+        <a href="#"><img src="/static/img/index-回到最上.png"></a>
+    </div>
+    <!-- 返回最上结束 -->
+    <div class="new_nav">
+        <div class="new_nav_in">
+            <img src="/static/img/AM.png"/>
+            <a class="btn btn-link" href="#f1">音乐美育</a>
+        </div>
+        <div class="new_nav_in">
+            <img src="/static/img/FB.png"/>
+            <a class="btn btn-link" href="#f2">金融财会</a>
+        </div>
+        <div class="new_nav_in">
+            <img src="/static/img/SE.png"/>
+            <a class="btn btn-link" href="#f3">理科工科</a>
+        </div>
+        <div class="new_nav_in">
+            <img src="/static/img/BM.png"/>
+            <a class="btn btn-link" href="#f4">生物医药</a>
+        </div>
+        <div class="new_nav_in">
+            <img src="/static/img/LS.png"/>
+            <a class="btn btn-link" href="#f5">人文社科</a>
+        </div>
+        <div class="new_nav_in">
+            <img src="/static/img/其余.png"/>
+            <a class="btn btn-link" href="#f6">其他书本</a>
+        </div>
+    </div>
+    <div class="main_content">
+        <div class="second_content_left nav-1" id="f1">
+            <img src="/static/img/AM.png">
+            <a href="/art_music_list/">音乐美育</a>
+            <a class="btn btn-link more_books"  href="/art_music_list/" >更多</a>
+            <div class="third_content">
+
+                {% for art_music in art_music_list %}
+                <div class="books">
+                    <img src="/static/{{ art_music.picture }}" style="width: 150px; height: 200px;">
+                </div>
+                <div class="describe">
+                    <img src="/static/img/商品1/箭头.png" >
+                    <a href="/books_details/?title={{ art_music.title }}">{{ art_music.title }}</a>
+                    <img src="/static/img/商品1/金钱2.png" class="rmb">
+                    <span>{{ art_music.price }}</span>
+                    <p>
+                        {{ art_music.description }}
+                    </p>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="second_content_left nav-1" id="f2">
+            <img src="/static/img/FB.png">
+            <a href="/financial_business_list">金融财会</a>
+            <a class="btn btn-link more_books"  href="/financial_business_list" >更多</a>
+            <div class="third_content">
+
+
+                {% for financial_business in financial_business_list %}
+                <div class="books">
+                    <img src="/static/{{ financial_business.picture }}" style="width: 150px; height: 200px ">
+                </div>
+                <div class="describe">
+                    <img src="/static/img/商品1/箭头.png" >
+                    <a href="/books_details/?title={{ financial_business.title }}">{{ financial_business.title }}</a>
+                    <img src="/static/img/商品1/金钱2.png" class="rmb">
+                    <span>{{ financial_business.price }}</span>
+                    <p>
+                        {{ financial_business.description }}
+                    </p>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>       
+        <div class="second_content_left nav-1" id="f3">
+            <img src="/static/img/SE.png">
+            <a href="/science_engineering_list">理科工科</a>
+            <a class="btn btn-link more_books"  href="/science_engineering_list" >更多</a>
+            <div class="third_content">
+
+                {% for science_engineering in science_engineering_list %}
+                <div class="books">
+                    <img src="/static/{{ science_engineering.picture }}" style="width: 150px; height: 200px">
+                </div>
+                <div class="describe">
+                    <img src="/static/img/商品1/箭头.png" >
+                    <a href="/books_details/?title={{ science_engineering.title }}">{{ science_engineering.title }}</a>
+                    <img src="/static/img/商品1/金钱2.png" class="rmb">
+                    <span>{{ science_engineering.price }}</span>
+                    <p>
+                        {{ science_engineering.description }}
+                    </p>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="second_content_left nav-1" id="f4">
+            <img src="/static/img/BM.png">
+            <a href="/biology_medicine_list">生物医药</a> 
+            <a class="btn btn-link more_books"  href="/biology_medicine_list" >更多</a>
+            <div class="third_content">
+           
+                {% for biology_medicine in biology_medicine_list %}
+                <div class="books">
+                    <img src="/static/{{ biology_medicine.picture }}" style="width: 150px; height: 200px">
+                </div>
+                <div class="describe">
+                    <img src="/static/img/商品1/箭头.png" >
+                    <a href="/books_details/?title={{ biology_medicine.title }}">{{ biology_medicine.title }}</a>
+                    <img src="/static/img/商品1/金钱2.png" class="rmb">
+                    <span>{{ biology_medicine.price }}</span>
+                    <p>
+                        {{ biology_medicine.description }}
+                    </p>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="second_content_left nav-1" id="f5">
+            <img src="/static/img/LS.png">
+            <a href="/literature_social_list">人文社科</a>
+            <a class="btn btn-link more_books"  href="/literature_social_list" >更多</a>
+            <div class="third_content">
+
+                {% for literature_social in literature_social_list %}
+                <div class="books">
+                    <img src="/static/{{ literature_social.picture }}" style="width: 150px; height: 200px">
+                </div>
+                <div class="describe">
+                    <img src="/static/img/商品1/箭头.png" >
+                    <a  href="/books_details/?title={{ literature_social.title }}">{{ literature_social.title }}</a>
+                    <img src="/static/img/商品1/金钱2.png" class="rmb">
+                    <span>{{ literature_social.price }}</span>
+                    <p>
+                        {{ literature_social.description }}
+                    </p>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+        <div class="second_content_left nav-1" id="f6" style="overflow: hidden;">
+            <img src="/static/img/其余.png">
+            <a href="/other_list">其他书本</a>
+            <a class="btn btn-link more_books"  href="/other_list" >更多</a>
+            <div class="third_content">
+            
+                {% for other in other_list %}
+                <div class="books">
+                    <img src="/static/{{ other.picture }}" style="width: 150px; height: 200px">
+                </div>
+                <div class="describe">
+                    <img src="/static/img/商品1/箭头.png" >
+                    <a   href="/books_details/?title={{ other.title }}">{{ other.title }}</a>
+                    <img src="/static/img/商品1/金钱2.png" class="rmb">
+                    <span>{{ other.price }}</span>
+                <p>
+                    {{ other.description }}
+                </p>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>               
+    </div>
+    <!-- foot -->
+    <div class="foot">
+        <img src="/static/img/titleb.png">
+        <p>为了环保，为了阅读</p>
+        <span>高校二手书交易平台</span>
+      
+    </div>
+    <address>
+        Written by PPBB <br> 
+            Visit us at:<br>
+            NKU<br>
+            tel：18051088179
+    </address>
+
+    <script src="/static/js/jquery-3.3.1.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/file.js"></script>
+</body>
+</html>
