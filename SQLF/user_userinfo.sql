@@ -1,0 +1,9 @@
+INSERT INTO `user_userinfo` (`id`, `username`, `password`, `number`) VALUES (1, 'PPBB', '111111', '111111');
+INSERT INTO `user_userinfo` (`id`, `username`, `password`, `number`) VALUES (2, 'HYXX', '222222', '222222');
+INSERT INTO `user_userinfo` (`id`, `username`, `password`, `number`) VALUES (3, 'weima', '444444', '444444');
+INSERT INTO `user_userinfo` (`id`, `username`, `password`, `number`) VALUES (4, 'JJJJ', '555555', '555555');
+INSERT INTO `user_userinfo` (`id`, `username`, `password`, `number`) VALUES (5, 'QIAHN', '333333', '333333');
+INSERT INTO `user_userinfo` (`id`, `username`, `password`, `number`) VALUES (6, 'JIALIN', '666666', '666666');
+INSERT INTO `user_userinfo` (`id`, `username`, `password`, `number`) VALUES (7, 'TTTTT', '7c4a8d09ca3762af61e59520943dc26494f8941b', '123456');
+INSERT INTO `user_userinfo` (`id`, `username`, `password`, `number`) VALUES (8, 'yzp', '6e44d3efd5fa8ef5c0810a282cf3c321a78b3cf9', '2211819');
+INSERT INTO `user_userinfo` (`id`, `username`, `password`, `number`) VALUES (9, '1551', '7c4a8d09ca3762af61e59520943dc26494f8941b', '2211551');
